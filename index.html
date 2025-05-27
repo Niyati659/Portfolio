@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niyati Goyal - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 3rem 0;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #667eea;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Education */
+        .education-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .institution {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .duration {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .degree {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .location {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #f1f3f4;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #333;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Experience */
+        .experience-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #28a745;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .position {
+            color: #28a745;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Achievements */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 3px solid #ffd700;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #764ba2;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .education-header,
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-img">👩‍💻</div>
+                <h1 class="name">Niyati Goyal</h1>
+                <p class="title">Computer Science Student</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <a href="tel:+917042717661">+91-7042717661</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <a href="mailto:niyatig659@gmail.com">niyatig659@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://linkedin.com/in/niyati-goyal-b50183277" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🐙</span>
+                        <a href="https://github.com/Niyati659" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#education" onclick="showSection('education')">Education</a></li>
+                    <li><a href="#skills" onclick="showSection('skills')">Skills</a></li>
+                    <li><a href="#experience" onclick="showSection('experience')">Experience</a></li>
+                    <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
+                    <li><a href="#achievements" onclick="showSection('achievements')">Achievements</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item fade-in">
+                <div class="education-header">
+                    <div>
+                        <div class="institution">Indira Gandhi Delhi Technical University For Women</div>
+                        <div class="degree">B.Tech - CGPA: 8.99</div>
+                        <div class="location">New Delhi</div>
+                    </div>
+                    <div class="duration">2023 – 2027</div>
+                </div>
+            </div>
+            <div class="education-item fade-in">
+                <div class="education-header">
+                    <div>
+                        <div class="institution">Blue Bells Public School</div>
+                        <div class="degree">CBSE - 12th - Percentage: 96.3%</div>
+                        <div class="location">Gurgaon</div>
+                    </div>
+                    <div class="duration">2022 – 2023</div>
+                </div>
+            </div>
+            <div class="education-item fade-in">
+                <div class="education-header">
+                    <div>
+                        <div class="institution">Blue Bells Public School</div>
+                        <div class="degree">CBSE - 10th - Percentage: 97.4%</div>
+                        <div class="location">Gurgaon</div>
+                    </div>
+                    <div class="duration">2020 – 2021</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section hidden">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Developer Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">GitHub</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Coursework</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Structures & Algorithms</span>
+                        <span class="skill-tag">Operating Systems</span>
+                        <span class="skill-tag">Computer Networks</span>
+                        <span class="skill-tag">DBMS</span>
+                        <span class="skill-tag">Artificial Intelligence</span>
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Web Development</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Public Speaking</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Event Management</span>
+                        <span class="skill-tag">Time Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section hidden">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <div class="company">Defence Research and Development Organisation (DRDO)</div>
+                        <div class="position">SAG (Scientific Analysis Group), DRDO</div>
+                        <div class="location">New Delhi</div>
+                    </div>
+                    <div class="duration">06 2025 – 07 2025</div>
+                </div>
+                <div class="project-description">
+                    • Ongoing 8 week internship at Scientific Analysis Group.
+                </div>
+            </div>
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <div class="company">Computer Vision and Deep Learning</div>
+                        <div class="position">Center of Excellence-Artificial Intelligence, IGDTUW</div>
+                        <div class="location">New Delhi</div>
+                    </div>
+                    <div class="duration">06 2024 – 07 2024</div>
+                </div>
+                <div class="project-description">
+                    • Attended a 8 week internship focusing on Deep Learning and Computer Vision and its application. Developed a Deep Learning Project on Music Genre Classification.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section hidden">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-title">Music Genre Classification</div>
+                        <div class="project-tech">Python, TensorFlow, Scikit Learn, Deep Learning</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            Developed a deep learning model for music genre classification using MFCC (Mel-frequency cepstral coefficients) features, processing 1,000+ audio files across 10 genres with batch normalization, dropout (0.5), and Adam optimization.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-title">Sentimental Analyzer</div>
+                        <div class="project-tech">Python, NLP, Scikit-learn</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            Processed 72,314 tweets, applying advanced text preprocessing techniques to enhance feature representation. Successfully identified negative sentiment with 79 percent recall, ensuring strong detection of critical feedback.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-title">Portfolio Website</div>
+                        <div class="project-tech">HTML, CSS, JavaScript</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-description">
+                            Developed a personal portfolio website to showcase my skills and projects, enhancing my online presence and professional branding.
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section hidden">
+        <div class="container">
+            <h2 class="section-title">Achievements & Leadership</h2>
+            <div class="achievements-grid">
+                <div class="achievement-item fade-in">
+                    <strong>Semi-Finalist</strong><br>
+                    Hack-4-Change Hackathon By Google
+                </div>
+                <div class="achievement-item fade-in">
+                    <strong>Data Structures in Java</strong><br>
+                    Coding Ninja Certification of Completion
+                </div>
+                <div class="achievement-item fade-in">
+                    <strong>Certified Mentee</strong><br>
+                    AI-ML Circle, Google Developer Student Club, IGDTUW
+                </div>
+                <div class="achievement-item fade-in">
+                    <strong>Academic Excellence Award</strong><br>
+                    Introduction to Java, Coding Ninja
+                </div>
+                <div class="achievement-item fade-in">
+                    <strong>Core Member</strong><br>
+                    Google Developer Group On Campus IGDTUW (Aug 2024)
+                </div>
+                <div class="achievement-item fade-in">
+                    <strong>PR Team Member</strong><br>
+                    Rotaract Club of IGDTUW (Aug 2024)
+                </div>
+                <div class="achievement-item fade-in">
+                    <strong>Sponsorship Team Member</strong><br>
+                    Finivesta Club - Finance & Economics Society (2023-2024)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://linkedin.com/in/niyati-goyal-b50183277" target="_blank" class="social-link">💼</a>
+                <a href="https://github.com/Niyati659" target="_blank" class="social-link">🐙</a>
+                <a href="mailto:niyatig659@gmail.com" class="social-link">✉️</a>
+            </div>
+            <p>&copy; 2024 Niyati Goyal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Show different sections
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.remove('hidden');
+            
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+            
+            // Trigger animations for visible elements
+            setTimeout(() => {
+                const visibleElements = document.querySelectorAll(`#${sectionName} .fade-in`);
+                visibleElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 100);
+                });
+            }, 50);
+        }
+
+        // Initialize page
+        window.onload = function() {
+            // Show education section by default
+            document.querySelector('.nav-links a').classList.add('active');
+            
+            // Animate initial elements
+            const initialElements = document.querySelectorAll('#education .fade-in');
+            initialElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, index * 200);
+            });
+        };
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
